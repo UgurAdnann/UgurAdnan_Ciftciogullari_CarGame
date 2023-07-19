@@ -63,17 +63,17 @@ public class LevelGenerator : MonoBehaviour
             for (int i = 0; i <= playerCounter; i++)
             {
                 if (i < playerCounter)
-                    currentPlayer = Instantiate(playablePlayerPrefab);
+                    currentPlayer = Instantiate(followablePlayerPrefab);
 
                 if (i == playerCounter)
                 {
                     Instantiate(targetIconPrefab, playerPoses[i].endPos, Quaternion.identity, transform);
-                    currentPlayer = Instantiate(followablePlayerPrefab);
+                    currentPlayer = Instantiate(playablePlayerPrefab);
                 }
 
                 currentPlayer.transform.SetParent(transform);
                 currentPlayer.transform.position = playerPoses[i].startPos;
-                currentPlayer.transform.rotation = playerPoses[i].rot;
+                currentPlayer.transform.localRotation = playerPoses[i].rot;
             }
             playerCounter++;
         }

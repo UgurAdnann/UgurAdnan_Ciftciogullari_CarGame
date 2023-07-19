@@ -5,14 +5,7 @@ using UnityEngine;
 public class PlayerClass : MonoBehaviour
 {
     public PlayerType playerType;
-    
-    void Start()
-    {
-        
-    }
+    public bool isMove;
 
-    void Update()
-    {
-        
-    }
+  
 }
