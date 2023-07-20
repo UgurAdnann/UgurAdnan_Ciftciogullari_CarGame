@@ -6,6 +6,7 @@ public static class ObjectManager
     #region Managers
     public static PlayerPlayable PlayerPlayable;
     public static GameManager GameManager;
+    public static PoolingManager PoolingManager;
     #endregion
 }
 

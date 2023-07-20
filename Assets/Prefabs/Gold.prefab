@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6473507125572977723}
   - component: {fileID: -1230987603429639495}
   - component: {fileID: 1501024597538607675}
+  - component: {fileID: 5131161571552758103}
   m_Layer: 0
   m_Name: Gold
   m_TagString: Gold
@@ -115,3 +116,15 @@ CircleCollider2D:
   m_Offset: {x: 0.032648087, y: 0}
   serializedVersion: 2
   m_Radius: 1.5914383
+--- !u!114 &5131161571552758103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6473507125572977722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 102630cbcd9fb9343a22bad09a964946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

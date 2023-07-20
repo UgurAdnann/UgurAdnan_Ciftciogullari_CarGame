@@ -6,6 +6,7 @@ public class PlayerPlayable : PlayerClass
 {
     #region Variables for General
     private GameManager gameManager;
+    private PoolingManager poolingManager;
     #endregion
 
     #region Variables for Movement
@@ -13,7 +14,7 @@ public class PlayerPlayable : PlayerClass
     #endregion
 
     #region Variables for Collision
-    private bool isCrashed,isNextStage;
+    private bool isCrashed, isNextStage;
     #endregion
 
     private void Awake()
@@ -24,6 +25,7 @@ public class PlayerPlayable : PlayerClass
     private void Start()
     {
         gameManager = ObjectManager.GameManager;
+        poolingManager = ObjectManager.PoolingManager;
     }
 
     void Update()
@@ -44,11 +46,13 @@ public class PlayerPlayable : PlayerClass
     #region Turning Movements
     public void TurnRight()
     {
-        transform.Rotate(-Vector3.forward * rotateSpeed * Time.deltaTime);
+        if (isMove)
+            transform.Rotate(-Vector3.forward * rotateSpeed * Time.deltaTime);
     }
     public void TurnLeft()
     {
-        transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
+        if (isMove)
+            transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
     }
     #endregion
 
@@ -63,6 +67,7 @@ public class PlayerPlayable : PlayerClass
             {
                 isCrashed = true;
                 gameManager.StopAllCars();
+                poolingManager.UseCrashFx(collision.ClosestPoint(transform.position));
                 EventManager.OpenFailpanel();
             }
         }
@@ -78,11 +83,7 @@ public class PlayerPlayable : PlayerClass
             }
         }
 
-        if (collision.CompareTag("Gold"))
-        {
-            collision.gameObject.SetActive(false);
-            print("Gold");
-        }
+
     }
     #endregion
 

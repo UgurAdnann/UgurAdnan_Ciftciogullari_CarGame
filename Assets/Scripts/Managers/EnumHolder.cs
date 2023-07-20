@@ -10,5 +10,7 @@ public enum PlayerType
 public enum ObjectType
 {
     Obstacle,
-    Gold
+    Gold,
+    GoldFx,
+    CrashFx
 }

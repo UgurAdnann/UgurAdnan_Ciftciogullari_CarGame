@@ -20,12 +20,19 @@ public class CanvasManager : MonoBehaviour
 
     public void OpenFailPanel()
     {
-        failPanel.SetActive(true);
+        StartCoroutine(WaitOpenFailPanel());
     }
 
     public void CloseFailPanel()
     {
         failPanel.SetActive(false);
         failPanel.transform.localScale = Vector3.zero;
+    }
+
+    private IEnumerator WaitOpenFailPanel()
+    {
+        yield return new WaitForSeconds(0.75f);
+        failPanel.SetActive(true);
+
     }
 }
