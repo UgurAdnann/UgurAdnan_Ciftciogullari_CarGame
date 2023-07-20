@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class TurnButtons : MonoBehaviour
 {
+    #region Variables for Turn Player
     [HideInInspector] public PlayerPlayable playerPlayable;
     [HideInInspector] public bool isClick, isTurning,isEnter;
+    #endregion
 
     public void Start()
     {
@@ -15,7 +17,6 @@ public class TurnButtons : MonoBehaviour
     #region Mouse Events
     public void PointerDown()
     {
-        print("Down");
         isClick = true;
         if (isEnter)
             isTurning = true;
@@ -23,20 +24,17 @@ public class TurnButtons : MonoBehaviour
 
     public void PointerEnter()
     {
-        print("Enter");
         isEnter = true;
     }
 
    public void PointerExit()
     {
-        print("Exit");
         isTurning = false;
         isEnter = false;
     }
 
     public void PointerUp()
     {
-        print("Up");
         isClick = false;
         isTurning = false;
     }

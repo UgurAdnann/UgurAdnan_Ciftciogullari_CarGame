@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class TurnLeftButton : TurnButtons
 {
-
-
     void Update()
     {
         if (isTurning)
