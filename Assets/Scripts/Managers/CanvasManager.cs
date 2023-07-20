@@ -31,7 +31,7 @@ public class CanvasManager : MonoBehaviour
 
     private IEnumerator WaitOpenFailPanel()
     {
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(0.5f);
         failPanel.SetActive(true);
 
     }
