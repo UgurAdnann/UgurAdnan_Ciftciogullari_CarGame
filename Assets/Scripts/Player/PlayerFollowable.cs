@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFollowable : PlayerClass
+public class PlayerFollowable : PlayerClass 
 {
-    // Start is called before the first frame update
+    #region Variables for General
+    #endregion
+
     void Start()
     {
-        
+        SetStartEvent();
+       
     }
 
-    // Update is called once per frame
     void Update()
     {
         

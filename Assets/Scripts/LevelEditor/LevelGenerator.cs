@@ -11,17 +11,21 @@ public class LevelGenerator : MonoBehaviour
     public Texture2D map;
     public ColorToPrefab[] colorMappings;
     private Transform obstacles, golds;
-    private GameObject  currentObject;
+    private GameObject currentObject;
     #endregion
 
     #region Variables for Other Object
     public PlayerPosHolder[] playerPoses;
     private Transform levels;
     public GameObject playablePlayerPrefab, followablePlayerPrefab, targetIconPrefab;
-    private GameObject currentPlayer;
+    private GameObject currentPlayer, currentTarget;
     public int playerCounter;
     #endregion
 
+    private void Awake()
+    {
+        ObjectManager.LevelGenerator = this;
+    }
 
     void Start()
     {
@@ -31,7 +35,7 @@ public class LevelGenerator : MonoBehaviour
         obstacles = GameObject.FindGameObjectWithTag("Obstacles").transform;
         golds = GameObject.FindGameObjectWithTag("Golds").transform;
 
-        SetPlayerPoses();
+        SetCurrentPlayer();
         GenerateLevel();
     }
 
@@ -80,32 +84,38 @@ public class LevelGenerator : MonoBehaviour
     #endregion
 
     #region Instantiate Other Objects
-    void SetPlayerPoses()
+    private void SetCurrentPlayer()
     {
-        if (playerCounter < playerPoses.Length)
+        //Instantiate Current Car and Target
+        currentTarget = Instantiate(targetIconPrefab, playerPoses[playerCounter].endPos, Quaternion.identity, levels);
+        currentPlayer = Instantiate(playablePlayerPrefab);
+
+        SetPlayerSettings(playerCounter);
+        gameManager.isCanStart = true;
+    }
+
+    public void SetLastPlayer()
+    {
+        currentPlayer = Instantiate(followablePlayerPrefab);
+        foreach (var item in gameManager.lastPathList)
         {
-            for (int i = 0; i <= playerCounter; i++)
-            {
-                //Instantiate Previous Cars
-                if (i < playerCounter)
-                    currentPlayer = gameManager.cars[i];
-
-                //Instantiate Current Car and Target
-                if (i == playerCounter)
-                {
-                    Instantiate(targetIconPrefab, playerPoses[i].endPos, Quaternion.identity, levels);
-                    currentPlayer = Instantiate(playablePlayerPrefab);
-                    gameManager.cars.Add(currentPlayer);
-                }
-
-                //Car Settings
-                currentPlayer.transform.SetParent(levels);
-                currentPlayer.transform.position = playerPoses[i].startPos;
-                currentPlayer.transform.localRotation = playerPoses[i].rot;
-            }
-            playerCounter++;
-            gameManager.isCanStart = true;
+            currentPlayer.GetComponent<PlayerFollowable>().pathList.Add(item);
         }
+        SetPlayerSettings(playerCounter - 1);
+    }
+
+    private void SetPlayerSettings(int num)
+    {
+        gameManager.cars.Add(currentPlayer);
+
+        currentPlayer.transform.SetParent(levels);
+        currentPlayer.transform.position = playerPoses[num].startPos;
+        currentPlayer.transform.localRotation = playerPoses[num].rot;
+    }
+
+    public void SetTarget()
+    {
+        currentTarget.transform.position=playerPoses[playerCounter].endPos;
     }
     #endregion
 

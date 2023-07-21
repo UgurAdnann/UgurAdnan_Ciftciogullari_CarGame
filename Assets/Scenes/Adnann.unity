@@ -1103,7 +1103,13 @@ MonoBehaviour:
   playerPoses:
   - startPos: {x: 0, y: -15}
     endPos: {x: 5, y: 13}
+    rot: {x: 0, y: 0, z: 0.70710677, w: 0.70710677}
+  - startPos: {x: -2, y: -15}
+    endPos: {x: 3.1, y: 13}
     rot: {x: 0, y: 0, z: 0, w: 1}
+  - startPos: {x: -6, y: -9}
+    endPos: {x: 5, y: 13}
+    rot: {x: 0, y: 0, z: 1, w: -0.00000004371139}
   playablePlayerPrefab: {fileID: 227211467533598755, guid: abee03581893c5641944e07876f0fee9, type: 3}
   followablePlayerPrefab: {fileID: 2837596763926703617, guid: 2500e43b45e0fe44487e604c8c2296b3, type: 3}
   targetIconPrefab: {fileID: 705384208510496110, guid: 9759fb96b8d698c47807ef5751605029, type: 3}
@@ -1229,8 +1235,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cars: []
+  lastPathList: []
   isCanStart: 0
   isGameStart: 0
+  isGameOver: 0
 --- !u!1 &1146876215
 GameObject:
   m_ObjectHideFlags: 0

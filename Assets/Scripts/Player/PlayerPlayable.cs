@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerPlayable : PlayerClass
 {
     #region Variables for General
-    private GameManager gameManager;
     private PoolingManager poolingManager;
     #endregion
 
@@ -14,7 +13,7 @@ public class PlayerPlayable : PlayerClass
     #endregion
 
     #region Variables for Collision
-    private bool isCrashed, isNextStage;
+    public bool isCrashed, isNextStage;
     #endregion
 
     private void Awake()
@@ -24,7 +23,7 @@ public class PlayerPlayable : PlayerClass
 
     private void Start()
     {
-        gameManager = ObjectManager.GameManager;
+        SetStartEvent();
         poolingManager = ObjectManager.PoolingManager;
     }
 
@@ -39,7 +38,15 @@ public class PlayerPlayable : PlayerClass
     #region Forward Movement
     private void InputManager()
     {
+        if (!isSetPath)
+        {
+            CreatePath();
+            isSetPath = true;
+        }
+
         transform.Translate(transform.up * forwardSpeed * Time.deltaTime, Space.World);
+
+        
     }
     #endregion
 
@@ -68,6 +75,7 @@ public class PlayerPlayable : PlayerClass
                 isCrashed = true;
                 gameManager.StopAllCars();
                 poolingManager.UseCrashFx(collision.ClosestPoint(transform.position));
+                gameManager.isGameOver = true;
                 EventManager.OpenFailpanel();
             }
         }
@@ -76,14 +84,15 @@ public class PlayerPlayable : PlayerClass
         {
             if (!isNextStage)
             {
+                pathList.Add(transform.position);
+                foreach (var item in pathList)
+                {
+                    gameManager.lastPathList.Add(item);
+                }
                 isNextStage = true;
-                Time.timeScale = 0;
-                print("Next Stage");
-
+                gameManager.NextStage();
             }
         }
-
-
     }
     #endregion
 
