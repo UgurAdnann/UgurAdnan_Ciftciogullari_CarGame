@@ -32,7 +32,7 @@ public class PlayerClass : MonoBehaviour
 
     public void FollowPath()
     {
-        transform.DOPath(pathPoints, 7.5f, PathType.Linear, PathMode.Full3D, 10 /* resolution*/, Color.red);
+        transform.DOPath(pathPoints, 7.5f, PathType.Linear, PathMode.Full3D, 10 /* resolution*/, Color.red).SetEase(Ease.Linear);
     }
 
     private IEnumerator WaitCreatePath()
