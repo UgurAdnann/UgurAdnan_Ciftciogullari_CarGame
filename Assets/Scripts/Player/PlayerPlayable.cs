@@ -45,8 +45,6 @@ public class PlayerPlayable : PlayerClass
         }
 
         transform.Translate(transform.up * forwardSpeed * Time.deltaTime, Space.World);
-
-        
     }
     #endregion
 

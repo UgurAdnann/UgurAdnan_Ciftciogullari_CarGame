@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerClass : MonoBehaviour
 {
@@ -10,13 +11,14 @@ public class PlayerClass : MonoBehaviour
 
     #region Variables for Movement
     public PlayerType playerType;
-    [HideInInspector] public bool isMove;
+     public bool isMove;
     #endregion
 
     #region Variables for Path
     Coroutine lastRoutine = null;
     public List<Vector2> pathList = new List<Vector2>();
     public bool isSetPath;
+    public Vector3[] pathPoints;
     #endregion
 
     public void SetStartEvent()
@@ -30,7 +32,7 @@ public class PlayerClass : MonoBehaviour
 
     public void FollowPath()
     {
-
+        transform.DOPath(pathPoints, 7.5f, PathType.Linear, PathMode.Full3D, 10 /* resolution*/, Color.red);
     }
 
     private IEnumerator WaitCreatePath()

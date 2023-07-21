@@ -45,8 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d43da8d10fba54a8bb401e2c236b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   playerType: 1
   isMove: 0
+  pathList: []
+  isSetPath: 0
+  pathPoints: []
+  rotateSpeed: 0.7
 --- !u!1 &5690742565998973169
 GameObject:
   m_ObjectHideFlags: 0

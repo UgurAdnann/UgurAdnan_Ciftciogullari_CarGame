@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
         {
             cars[i].transform.position = levelGenerator.playerPoses[i].startPos;
             cars[i].transform.rotation = levelGenerator.playerPoses[i].rot;
+            cars[i].GetComponent<PlayerFollowable>().isSetPath = false;
         }
 
         levelGenerator.SetLastPlayer();
