@@ -8,6 +8,7 @@ public static class ObjectManager
     public static GameManager GameManager;
     public static PoolingManager PoolingManager;
     public static LevelGenerator LevelGenerator;
+    public static SceneController SceneController;
     #endregion
 }
 

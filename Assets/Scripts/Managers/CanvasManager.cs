@@ -4,35 +4,68 @@ using UnityEngine;
 
 public class CanvasManager : MonoBehaviour
 {
-    public GameObject failPanel;
+    #region Variables for General
+    private GameManager gameManager;
+    #endregion
+
+    #region Variables for UI
+    public GameObject failPanel, winPanel;
+    public TMPro.TextMeshProUGUI goldText;
+    #endregion
 
     private void OnEnable()
     {
-        EventManager.OpenFailpanel += OpenFailPanel;
-        EventManager.CloseFailpanel += CloseFailPanel;
+        EventManager.OpenEndpanel += OpenEndPanel;
+        EventManager.CloseEndpanel += CloseEndPanel;
     }
 
     private void OnDisable()
     {
-        EventManager.OpenFailpanel -= OpenFailPanel;
-        EventManager.CloseFailpanel -= CloseFailPanel;
+        EventManager.OpenEndpanel -= OpenEndPanel;
+        EventManager.CloseEndpanel -= CloseEndPanel;
     }
 
-    public void OpenFailPanel()
+    private void Start()
     {
-        StartCoroutine(WaitOpenFailPanel());
+        gameManager = ObjectManager.GameManager;
     }
 
-    public void CloseFailPanel()
+
+    #region EndPanel Events
+    private void OpenEndPanel()
     {
-        failPanel.SetActive(false);
-        failPanel.transform.localScale = Vector3.zero;
+        StartCoroutine(WaitOpenEndPanel());
     }
 
-    private IEnumerator WaitOpenFailPanel()
+    private void CloseEndPanel()
+    {
+        if (gameManager.isWin)
+        {
+            winPanel.SetActive(false);
+            winPanel.transform.localScale = Vector3.zero;
+        }
+        else
+        {
+            failPanel.SetActive(false);
+            failPanel.transform.localScale = Vector3.zero;
+        }
+    }
+
+    private IEnumerator WaitOpenEndPanel()
     {
         yield return new WaitForSeconds(0.5f);
-        failPanel.SetActive(true);
+        if (gameManager.isWin)
+        {
+            SetGoldText();
+            winPanel.SetActive(true);
+        }
+        else
+            failPanel.SetActive(true);
+    }
+    #endregion
 
+    private void SetGoldText()
+    {
+        goldText.text = gameManager.totalGold.ToString();
     }
 }

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class EventManager
 {
-    public static Action OpenFailpanel;
-    public static Action CloseFailpanel;
+    #region Events for CanvasManager
+    public static Action OpenEndpanel;
+    public static Action CloseEndpanel;
+    #endregion
 }

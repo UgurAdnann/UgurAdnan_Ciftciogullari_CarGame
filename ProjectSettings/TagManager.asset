@@ -10,6 +10,7 @@ TagManager:
   - Obstacle
   - Target
   - Gold
+  - PlayerFollowable
   layers:
   - Default
   - TransparentFX

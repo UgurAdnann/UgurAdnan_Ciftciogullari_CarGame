@@ -5,10 +5,12 @@ using UnityEngine;
 public class GoldController : MonoBehaviour
 {
     private PoolingManager poolingManager;
+    private GameManager gameManager;
 
     void Start()
     {
         poolingManager = ObjectManager.PoolingManager;
+        gameManager = ObjectManager.GameManager;
     }
    
 
@@ -18,7 +20,8 @@ public class GoldController : MonoBehaviour
         {
             poolingManager.UseGoldFx(transform.position);
             gameObject.SetActive(false);
-            print("Gold");
+            gameManager.collectedGolds.Add(gameObject);
+            gameManager.totalGold++;
         }
     }
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 public class TurnButtons : MonoBehaviour
 {
     #region Variables for Turn Player
-    [HideInInspector] public PlayerPlayable playerPlayable;
-    [HideInInspector] public bool isClick, isTurning,isEnter;
+    public PlayerPlayable playerPlayable;
+    [HideInInspector] public bool isClick, isTurning, isEnter;
     #endregion
 
     public void Start()
@@ -19,7 +19,12 @@ public class TurnButtons : MonoBehaviour
     {
         isClick = true;
         if (isEnter)
+        {
+            if (playerPlayable == null)
+                playerPlayable = ObjectManager.PlayerPlayable;
+
             isTurning = true;
+        }
     }
 
     public void PointerEnter()
@@ -27,7 +32,7 @@ public class TurnButtons : MonoBehaviour
         isEnter = true;
     }
 
-   public void PointerExit()
+    public void PointerExit()
     {
         isTurning = false;
         isEnter = false;

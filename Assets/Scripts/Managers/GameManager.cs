@@ -13,11 +13,14 @@ public class GameManager : MonoBehaviour
     public List<GameObject> cars = new List<GameObject>();
     public  List<Vector2> lastPathList;
     private GameObject tempCar;
-    private PlayerPlayable playerClass;
+    private PlayerPlayable playerPlayable;
+    public int totalGold;
     #endregion
 
     #region variables for Level State
     public bool isCanStart,isGameStart,isGameOver;
+    public bool isWin = true;
+    public List<GameObject> collectedGolds = new List<GameObject>();
     #endregion
 
     private void Awake()
@@ -59,10 +62,11 @@ public class GameManager : MonoBehaviour
         {
             item.GetComponent<PlayerClass>().isMove = false;
         }
+        DOTween.KillAll();
     }
     #endregion
 
-    #region Level End Events
+    #region Stage End Events
     public void NextStage()
     {
         levelGenerator.playerCounter++;
@@ -72,24 +76,29 @@ public class GameManager : MonoBehaviour
         DOTween.KillAll();
 
         tempCar = cars[cars.Count - 1];
-        playerClass = tempCar.GetComponent<PlayerPlayable>();
+        playerPlayable = tempCar.GetComponent<PlayerPlayable>();
         cars.Remove(tempCar);
 
-        for (int i = 0; i < cars.Count; i++)
-        {
-            cars[i].transform.position = levelGenerator.playerPoses[i].startPos;
-            cars[i].transform.rotation = levelGenerator.playerPoses[i].rot;
-            cars[i].GetComponent<PlayerFollowable>().isSetPath = false;
-        }
+        SetCars();
 
         levelGenerator.SetLastPlayer();
 
-
         SetCurrentCarSettings();
+        cars.Add(tempCar);
         ResetGameSettings();
 
 
         isCanStart = true;
+    }
+
+    private void SetCars()
+    {
+        for (int i = 0; i < cars.Count; i++)
+        {
+            cars[i].transform.position = levelGenerator.playerPoses[i].startPos;
+            cars[i].transform.rotation = levelGenerator.playerPoses[i].rot;
+            cars[i].GetComponent<PlayerClass>().isSetPath = false;
+        }
     }
 
     private void ResetGameSettings()
@@ -97,32 +106,62 @@ public class GameManager : MonoBehaviour
         isCanStart = false;
         isGameStart = false;
         isGameOver = false;
+        collectedGolds.Clear();
         lastPathList.Clear();
     }
 
     private void SetCurrentCarSettings()
     {
-        playerClass.isSetPath = false;
-        playerClass.pathList.Clear();
+        playerPlayable.isSetPath = false;
+        playerPlayable.pathList.Clear();
 
-        playerClass.StopPathNumarator();
+        playerPlayable.StopPathNumarator();
 
 
-        playerClass.isCrashed = false;
-        playerClass.isNextStage = false;
-        playerClass.isMove = false;
+        playerPlayable.isCrashed = false;
+        playerPlayable.isNextStage = false;
+        playerPlayable.isMove = false;
 
         tempCar.transform.position = levelGenerator.playerPoses[levelGenerator.playerCounter].startPos;
         tempCar.transform.rotation = levelGenerator.playerPoses[levelGenerator.playerCounter].rot;
 
-        cars.Add(tempCar);
 
         levelGenerator.SetTarget();
     }
 
-    public void NextLevel()
+    public void TryAgainButton()
     {
-        //SceneManager
+        tempCar = cars[cars.Count - 1];
+        playerPlayable = tempCar.GetComponent<PlayerPlayable>();
+
+        //Golds Settings
+        totalGold -= collectedGolds.Count;
+
+        SetFailedGolds();
+        ResetGameSettings();
+        EventManager.CloseEndpanel();
+        SetCurrentCarSettings();
+        StopAllCars();
+        SetCars();
+        isCanStart = true;
+    }
+    
+    private void SetFailedGolds()
+    {
+        foreach (var item in collectedGolds)
+        {
+            item.SetActive(true);
+        }
+    }
+
+
+    public void LevelEndEvent()
+    {
+        isWin = true;
+        StopAllCars();
+        EventManager.OpenEndpanel();
     }
     #endregion
+
+    
 }

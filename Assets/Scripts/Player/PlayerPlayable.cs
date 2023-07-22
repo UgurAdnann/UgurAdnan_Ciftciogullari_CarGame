@@ -6,6 +6,7 @@ public class PlayerPlayable : PlayerClass
 {
     #region Variables for General
     private PoolingManager poolingManager;
+    private LevelGenerator levelGenerator;
     #endregion
 
     #region Variables for Movement
@@ -25,6 +26,7 @@ public class PlayerPlayable : PlayerClass
     {
         SetStartEvent();
         poolingManager = ObjectManager.PoolingManager;
+        levelGenerator = ObjectManager.LevelGenerator;
     }
 
     void Update()
@@ -66,7 +68,7 @@ public class PlayerPlayable : PlayerClass
     #region Collision Events
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Obstacle"))
+        if (collision.CompareTag("Obstacle") || collision.CompareTag("PlayerFollowable"))
         {
             if (!isCrashed)
             {
@@ -74,7 +76,7 @@ public class PlayerPlayable : PlayerClass
                 gameManager.StopAllCars();
                 poolingManager.UseCrashFx(collision.ClosestPoint(transform.position));
                 gameManager.isGameOver = true;
-                EventManager.OpenFailpanel();
+                EventManager.OpenEndpanel();
             }
         }
 
@@ -88,7 +90,10 @@ public class PlayerPlayable : PlayerClass
                     gameManager.lastPathList.Add(item);
                 }
                 isNextStage = true;
-                gameManager.NextStage();
+                if (gameManager.cars.Count == levelGenerator.playerPoses.Length-5)
+                    gameManager.LevelEndEvent();
+                else
+                    gameManager.NextStage();
             }
         }
     }
