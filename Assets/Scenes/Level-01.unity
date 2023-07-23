@@ -449,7 +449,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822188094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1, y: -16.6, z: 0}
+  m_LocalPosition: {x: 6.8, y: 2.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35bea807ac258554c9ae5fbf65fcceef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map: {fileID: 2800000, guid: 2c547326998073e4d87ae99a8ca0861d, type: 3}
+  map: {fileID: 2800000, guid: 3a1bed28f8f936a4598b4957069e1882, type: 3}
   colorMappings:
   - name: Obstacle
     color: {r: 0, g: 0, b: 0, a: 1}
@@ -663,29 +663,29 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 0, a: 1}
     Prefab: {fileID: 6473507125572977722, guid: 98571dd0b5607a045bbe913f23b5eb31, type: 3}
   playerPoses:
-  - startPos: {x: 0, y: -15}
-    endPos: {x: 5, y: 13}
-    rot: {x: 0, y: 0, z: 0.70710677, w: 0.70710677}
-  - startPos: {x: -5, y: -15}
-    endPos: {x: -6.4, y: 14.7}
-    rot: {x: 0, y: 0, z: 0, w: 1}
-  - startPos: {x: -6, y: -1.7}
-    endPos: {x: -2.3, y: 2.8}
+  - startPos: {x: -6.7, y: -9.4}
+    endPos: {x: 6.8, y: 2.8}
+    rot: {x: 0, y: 0, z: 0.70710677, w: -0.70710677}
+  - startPos: {x: 0, y: -16}
+    endPos: {x: -6.4, y: 16.8}
+    rot: {x: 0, y: 0, z: 0, w: 0}
+  - startPos: {x: -6.3, y: 3.3}
+    endPos: {x: 6.5, y: -12}
     rot: {x: 0, y: 0, z: 1, w: -0.00000004371139}
-  - startPos: {x: 5.6, y: -9}
-    endPos: {x: -7.1, y: -14.2}
-    rot: {x: 0, y: 0, z: 0.3826835, w: -0.9238795}
-  - startPos: {x: -7, y: 4}
-    endPos: {x: 5.8, y: -10.4}
-    rot: {x: 0, y: 0, z: 0.70710677, w: -0.70710677}
-  - startPos: {x: -5.4, y: 16.6}
-    endPos: {x: 1.1, y: -3.9}
-    rot: {x: 0, y: 0, z: 0.70710677, w: -0.70710677}
-  - startPos: {x: 3.4, y: 11}
-    endPos: {x: -0.1, y: -16.6}
-    rot: {x: 0, y: 0, z: 0.70710677, w: -0.70710677}
-  - startPos: {x: -1.9, y: 3}
-    endPos: {x: 6.2, y: 17.3}
+  - startPos: {x: -0.4, y: 3.4}
+    endPos: {x: 5.1, y: 11.7}
+    rot: {x: 0, y: 0, z: 0, w: 0}
+  - startPos: {x: 7.1, y: 10.7}
+    endPos: {x: 1.2, y: -10.3}
+    rot: {x: 0, y: 0, z: 0.70710677, w: 0.70710677}
+  - startPos: {x: -4.8, y: 10.7}
+    endPos: {x: -6.7, y: -13.2}
+    rot: {x: 0, y: 0, z: 0, w: 0}
+  - startPos: {x: 1.1, y: 16.7}
+    endPos: {x: 6.4, y: 0}
+    rot: {x: 0, y: 0, z: 0.70710677, w: 0.70710677}
+  - startPos: {x: 4.7, y: -9.5}
+    endPos: {x: -1.8, y: -2.9}
     rot: {x: 0, y: 0, z: 1, w: -0.00000004371139}
   playablePlayerPrefab: {fileID: 227211467533598755, guid: abee03581893c5641944e07876f0fee9, type: 3}
   followablePlayerPrefab: {fileID: 2837596763926703617, guid: 2500e43b45e0fe44487e604c8c2296b3, type: 3}

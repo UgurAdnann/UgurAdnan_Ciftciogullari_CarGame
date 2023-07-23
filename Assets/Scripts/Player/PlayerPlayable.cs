@@ -90,7 +90,7 @@ public class PlayerPlayable : PlayerClass
                     gameManager.lastPathList.Add(item);
                 }
                 isNextStage = true;
-                if (gameManager.cars.Count == levelGenerator.playerPoses.Length-5)
+                if (gameManager.cars.Count == levelGenerator.playerPoses.Length)
                     gameManager.LevelEndEvent();
                 else
                     gameManager.NextStage();
