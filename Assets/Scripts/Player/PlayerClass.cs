@@ -11,20 +11,22 @@ public class PlayerClass : MonoBehaviour
 
     #region Variables for Movement
     public PlayerType playerType;
-    public bool isMove;
+    [HideInInspector] public bool isMove;
     #endregion
 
     #region Variables for Path
-    Coroutine lastRoutine = null;
-    public List<Vector2> pathList = new List<Vector2>();
-    public bool isSetPath;
-    public Vector3[] pathPoints;
+    private Coroutine lastRoutine = null;
+    [HideInInspector] public List<Vector2> pathList = new List<Vector2>();
+    [HideInInspector] public bool isSetPath;
+    [HideInInspector] public Vector3[] pathPoints;
     #endregion
 
     public void SetStartEvent()
     {
         gameManager = ObjectManager.GameManager;
     }
+
+    #region Path events
     public void CreatePath()
     {
         StartCoroutine(WaitCreatePath());
@@ -52,6 +54,7 @@ public class PlayerClass : MonoBehaviour
         lastRoutine = StartCoroutine(WaitCreatePath());
         StopCoroutine(lastRoutine);
     }
+    #endregion
 }
 
 

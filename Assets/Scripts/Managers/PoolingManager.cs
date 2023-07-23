@@ -6,14 +6,14 @@ public class PoolingManager : MonoBehaviour
 {
     #region Variables for Gold Fx
     public GameObject goldFxPrefab;
-    public Queue<GameObject> goldFxQue = new Queue<GameObject>();
+    private readonly Queue<GameObject> goldFxQue = new Queue<GameObject>();
     public int goldFxNum;
     private GameObject tempGoldFx;
     #endregion
 
     #region Variables for Crash Fx
     public GameObject crashFxPrefab;
-    public Queue<GameObject> crashFxQue = new Queue<GameObject>();
+    private readonly Queue<GameObject> crashFxQue = new Queue<GameObject>();
     public int crashFxNum;
     private GameObject tempCrashFx;
     #endregion

@@ -14,12 +14,12 @@ public class GameManager : MonoBehaviour
     public List<Vector2> lastPathList;
     private GameObject tempCar;
     private PlayerPlayable playerPlayable;
-    public int totalGold;
+   [HideInInspector] public int totalGold;
     #endregion
 
     #region variables for Level State
-    public bool isCanStart, isGameStart, isGameOver;
-    public bool isWin = true;
+    [HideInInspector] public bool isCanStart, isGameStart, isGameOver;
+    [HideInInspector] public bool isWin = true;
     public List<GameObject> collectedGolds = new List<GameObject>();
     #endregion
 

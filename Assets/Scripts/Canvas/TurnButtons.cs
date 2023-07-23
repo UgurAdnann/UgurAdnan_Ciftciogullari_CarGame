@@ -5,7 +5,7 @@ using UnityEngine;
 public class TurnButtons : MonoBehaviour
 {
     #region Variables for Turn Player
-    public PlayerPlayable playerPlayable;
+    [HideInInspector] public PlayerPlayable playerPlayable;
     [HideInInspector] public bool isClick, isTurning, isEnter;
     #endregion
 

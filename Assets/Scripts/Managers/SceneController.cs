@@ -6,7 +6,6 @@ using DG.Tweening;
 
 public class SceneController : MonoBehaviour
 {
-
     private void OnEnable()
     {
         EventManager.RestartLevel += RestartLevel;

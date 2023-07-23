@@ -14,7 +14,7 @@ public class PlayerPlayable : PlayerClass
     #endregion
 
     #region Variables for Collision
-    public bool isCrashed, isNextStage;
+    [HideInInspector] public bool isCrashed, isNextStage;
     #endregion
 
     private void Awake()
