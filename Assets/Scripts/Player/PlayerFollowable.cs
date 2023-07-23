@@ -13,7 +13,6 @@ public class PlayerFollowable : PlayerClass
     void Start()
     {
         SetStartEvent();
-
     }
 
     void Update()
@@ -28,7 +27,6 @@ public class PlayerFollowable : PlayerClass
             }
             SetRot();
         }
-
     }
 
     private void SetPath()
@@ -58,7 +56,6 @@ public class PlayerFollowable : PlayerClass
 
         nextXPos = transform.position.x;
         nextYPos = transform.position.y;
-
     }
 
 }

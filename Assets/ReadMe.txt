@@ -14,6 +14,7 @@ Unity Icý Ayarlar
 -"Read Write" Tiklenir
 
 -Pc Test için yön tuþlarý ve 'A-D' tuþlarý ile kontrol eklenmiþtir
+-Pc Test için ekrana dokunmak yerine 'Space' tuþu ile oyun baþlatýlabilir
 
 CONTACT
 Mail: adnann353@gmail.com

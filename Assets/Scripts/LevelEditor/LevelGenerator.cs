@@ -78,8 +78,6 @@ public class LevelGenerator : MonoBehaviour
                     currentObject.transform.SetParent(golds);
             }
         }
-
-
     }
     #endregion
 

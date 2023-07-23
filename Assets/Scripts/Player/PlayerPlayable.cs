@@ -25,6 +25,7 @@ public class PlayerPlayable : PlayerClass
     private void Start()
     {
         SetStartEvent();
+
         poolingManager = ObjectManager.PoolingManager;
         levelGenerator = ObjectManager.LevelGenerator;
     }

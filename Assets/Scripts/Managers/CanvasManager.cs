@@ -68,4 +68,21 @@ public class CanvasManager : MonoBehaviour
     {
         goldText.text = gameManager.totalGold.ToString();
     }
+
+    #region Buttons
+    public void TryAgainButton()
+    {
+        gameManager.TryAgainEvents();
+    }
+
+    public void RestartButton()
+    {
+        EventManager.RestartLevel();
+    }
+
+    public void NextLevelButton()
+    {
+        EventManager.NextLevel();
+    }
+    #endregion
 }

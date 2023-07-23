@@ -7,11 +7,17 @@ using DG.Tweening;
 public class SceneController : MonoBehaviour
 {
 
-    private void Awake()
+    private void OnEnable()
     {
-        ObjectManager.SceneController = this;
+        EventManager.RestartLevel += RestartLevel;
+        EventManager.NextLevel += NextLevel;
     }
 
+    private void OnDisable()
+    {
+        EventManager.RestartLevel -= RestartLevel;
+        EventManager.NextLevel -= NextLevel;
+    }
 
     public void NextLevel()
     {
@@ -22,7 +28,7 @@ public class SceneController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void ReloadLevel()
+    public void RestartLevel()
     {
         StopBehindGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

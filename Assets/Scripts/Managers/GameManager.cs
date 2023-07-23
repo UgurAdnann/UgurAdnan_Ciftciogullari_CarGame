@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     #region Cars Event
     private void StartAllCars()
     {
-        if (isCanStart && Input.GetMouseButtonDown(0))
+        if (isCanStart && (Input.GetMouseButtonDown(0)||Input.GetKeyDown(KeyCode.Space)))
         {
             if (!isGameStart)
             {
@@ -115,7 +115,6 @@ public class GameManager : MonoBehaviour
 
         playerPlayable.StopPathNumarator();
 
-
         playerPlayable.isCrashed = false;
         playerPlayable.isNextStage = false;
         playerPlayable.isMove = false;
@@ -123,11 +122,10 @@ public class GameManager : MonoBehaviour
         tempCar.transform.position = levelGenerator.playerPoses[levelGenerator.playerCounter].startPos;
         tempCar.transform.rotation = levelGenerator.playerPoses[levelGenerator.playerCounter].rot;
 
-
         levelGenerator.SetTarget();
     }
 
-    public void TryAgainButton()
+    public void TryAgainEvents()
     {
         tempCar = cars[^1];
         playerPlayable = tempCar.GetComponent<PlayerPlayable>();
