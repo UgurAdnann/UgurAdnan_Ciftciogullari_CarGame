@@ -20,6 +20,11 @@ public class GoldController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            if (poolingManager.Equals(null))
+                poolingManager = ObjectManager.PoolingManager;
+            if (gameManager.Equals(null))
+                gameManager = ObjectManager.GameManager;
+
             poolingManager.UseGoldFx(transform.position);
             gameObject.SetActive(false);
 

@@ -88,6 +88,7 @@ public class PlayerPlayable : PlayerClass
                 isCrashed = true;
                 gameManager.StopAllCars();
                 poolingManager.UseCrashFx(collision.ClosestPoint(transform.position));
+
                 gameManager.isGameOver = true;
                 EventManager.OpenEndpanel();
             }
