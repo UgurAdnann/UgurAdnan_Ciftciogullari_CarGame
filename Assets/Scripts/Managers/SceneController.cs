@@ -6,24 +6,16 @@ using DG.Tweening;
 
 public class SceneController : MonoBehaviour
 {
-    #region Variables for General
-    private GameManager gameManager;
-    #endregion
 
     private void Awake()
     {
         ObjectManager.SceneController = this;
     }
 
-    void Start()
-    {
-        gameManager = ObjectManager.GameManager;
-        print(SceneManager.GetActiveScene().buildIndex);
-        print(SceneManager.sceneCountInBuildSettings);
-    }
 
     public void NextLevel()
     {
+        StopBehindGame();
         if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1)
             SceneManager.LoadScene(0);
         else
@@ -32,6 +24,7 @@ public class SceneController : MonoBehaviour
 
     public void ReloadLevel()
     {
+        StopBehindGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

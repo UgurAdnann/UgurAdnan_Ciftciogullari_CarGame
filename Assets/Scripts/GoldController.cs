@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class GoldController : MonoBehaviour
 {
+    #region Variables for General
     private PoolingManager poolingManager;
     private GameManager gameManager;
+    #endregion
 
     void Start()
     {
         poolingManager = ObjectManager.PoolingManager;
         gameManager = ObjectManager.GameManager;
     }
-   
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -20,6 +22,7 @@ public class GoldController : MonoBehaviour
         {
             poolingManager.UseGoldFx(transform.position);
             gameObject.SetActive(false);
+
             gameManager.collectedGolds.Add(gameObject);
             gameManager.totalGold++;
         }

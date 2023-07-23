@@ -13,6 +13,8 @@ Unity Icý Ayarlar
 -Comprasion "None" yapýlýr
 -"Read Write" Tiklenir
 
+-Pc Test için yön tuþlarý ve 'A-D' tuþlarý ile kontrol eklenmiþtir
+
 CONTACT
 Mail: adnann353@gmail.com
 Phone: 05464157874

@@ -3,8 +3,8 @@ using UnityEngine;
 
 public enum PlayerType
 {
-   Playable,
-   Followable
+    Playable,
+    Followable
 }
 
 public enum ObjectType

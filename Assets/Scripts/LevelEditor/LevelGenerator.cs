@@ -115,7 +115,7 @@ public class LevelGenerator : MonoBehaviour
 
     public void SetTarget()
     {
-        currentTarget.transform.position=playerPoses[playerCounter].endPos;
+        currentTarget.transform.position = playerPoses[playerCounter].endPos;
     }
     #endregion
 

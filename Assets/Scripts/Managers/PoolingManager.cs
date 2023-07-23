@@ -28,11 +28,6 @@ public class PoolingManager : MonoBehaviour
         CreateCrashFxQue();
     }
 
-    void Update()
-    {
-
-    }
-
     #region GoldFx
     private void CreateGoldFxQue()
     {

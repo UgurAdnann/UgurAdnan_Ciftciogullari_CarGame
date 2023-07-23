@@ -11,7 +11,7 @@ public class PlayerClass : MonoBehaviour
 
     #region Variables for Movement
     public PlayerType playerType;
-     public bool isMove;
+    public bool isMove;
     #endregion
 
     #region Variables for Path

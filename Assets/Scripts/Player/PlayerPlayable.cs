@@ -33,6 +33,7 @@ public class PlayerPlayable : PlayerClass
     {
         if (isMove)
             InputManager();
+        PcControl();
     }
 
     #region Variables for Movement
@@ -60,6 +61,17 @@ public class PlayerPlayable : PlayerClass
     {
         if (isMove)
             transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
+    }
+    #endregion
+
+    #region PC Controller
+    private void PcControl()
+    {
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+            TurnRight();
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+            TurnLeft();
+
     }
     #endregion
 

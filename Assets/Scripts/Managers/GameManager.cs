@@ -11,14 +11,14 @@ public class GameManager : MonoBehaviour
 
     #region Variables for Cars
     public List<GameObject> cars = new List<GameObject>();
-    public  List<Vector2> lastPathList;
+    public List<Vector2> lastPathList;
     private GameObject tempCar;
     private PlayerPlayable playerPlayable;
     public int totalGold;
     #endregion
 
     #region variables for Level State
-    public bool isCanStart,isGameStart,isGameOver;
+    public bool isCanStart, isGameStart, isGameOver;
     public bool isWin = true;
     public List<GameObject> collectedGolds = new List<GameObject>();
     #endregion
@@ -36,8 +36,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         StartAllCars();
-        if (Input.GetKeyDown(KeyCode.Space))
-            NextStage();
     }
 
     #region Cars Event
@@ -75,7 +73,7 @@ public class GameManager : MonoBehaviour
         StopAllCars();
         DOTween.KillAll();
 
-        tempCar = cars[cars.Count - 1];
+        tempCar = cars[^1];
         playerPlayable = tempCar.GetComponent<PlayerPlayable>();
         cars.Remove(tempCar);
 
@@ -131,7 +129,7 @@ public class GameManager : MonoBehaviour
 
     public void TryAgainButton()
     {
-        tempCar = cars[cars.Count - 1];
+        tempCar = cars[^1];
         playerPlayable = tempCar.GetComponent<PlayerPlayable>();
 
         //Golds Settings
@@ -145,7 +143,7 @@ public class GameManager : MonoBehaviour
         SetCars();
         isCanStart = true;
     }
-    
+
     private void SetFailedGolds()
     {
         foreach (var item in collectedGolds)
@@ -153,7 +151,6 @@ public class GameManager : MonoBehaviour
             item.SetActive(true);
         }
     }
-
 
     public void LevelEndEvent()
     {
@@ -163,5 +160,5 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    
+
 }
